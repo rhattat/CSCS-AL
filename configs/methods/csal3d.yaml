@@ -1,0 +1,7 @@
+name: csal3d
+display: "CSAL-3D"
+description: >
+  Uncertainty-weighted clustering + typicality+uncertainty per-cluster selection.
+  Reference: Zhu et al., MICCAI 2025.
+n_cand: 3      # Top-N most typical candidates per cluster
+seed: 42

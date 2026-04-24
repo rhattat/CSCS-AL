@@ -1,0 +1,4 @@
+name: fps
+display: "FPS"
+description: "Farthest Point Sampling — greedy k-center diversity selection."
+seed: 42

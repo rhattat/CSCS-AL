@@ -1,0 +1,28 @@
+name: spleen
+display: Spleen
+description: "Spleen Segmentation (MSD Task09)"
+
+features_csv: "outputs/spleen/features/spleen_ssl_features_train.csv"
+embeddings_dir: "outputs/spleen/features/embeddings"
+train_file: "data/splits/spleen/train.txt"
+val_file: "data/splits/spleen/val.txt"
+
+n_train: 34
+n_val: 7
+
+budgets: [7, 10, 14]
+
+channel: null
+crop_size: 96
+mask_ratio: 0.45
+k_neighbors: 15
+
+metrics:
+  - dice_mean_fg
+  - hd95_mean_fg
+
+upper_bounds:
+  dice: 97.5
+  hd95: 1.0
+
+tag: "(2) Spleen"

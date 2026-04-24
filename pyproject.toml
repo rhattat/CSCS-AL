@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cscs-al"
+version = "1.0.0"
+description = "CSCS: Cold-Start Curriculum Selection for Active Learning in 3D Medical Image Segmentation"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Rémi HATTAT", email = "remi.hattat@univ-lorraine.fr" }]
+requires-python = ">=3.10"
+keywords = ["active learning", "medical imaging", "segmentation", "cold start", "curriculum learning"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scipy>=1.11",
+    "scikit-learn>=1.3",
+    "pyyaml>=6.0",
+    "matplotlib>=3.7",
+    "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+ssl = ["torch>=2.0", "nibabel>=5.0"]
+viz = ["umap-learn>=0.5"]
+fast = ["faiss-cpu>=1.7"]
+dev = ["pytest>=7.4", "pytest-cov>=4.0", "ruff>=0.1"]
+all = ["cscs-al[ssl,viz,fast,dev]"]
+
+[project.scripts]
+cscs-select = "scripts.generate_selection:main"
+cscs-run    = "scripts.run_experiment:main"
+cscs-summarize = "scripts.summarize_results:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cscs*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

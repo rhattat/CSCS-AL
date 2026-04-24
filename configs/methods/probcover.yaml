@@ -1,0 +1,7 @@
+name: probcover
+display: "ProbCover"
+description: >
+  Greedy max-coverage via epsilon-ball graph.
+  Delta selected automatically via binary search.
+  Reference: Yehuda et al., NeurIPS 2022.
+seed: 42

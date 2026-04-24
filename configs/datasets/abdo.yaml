@@ -1,0 +1,28 @@
+name: abdo
+display: Abdominal
+description: "Multi-organ abdominal segmentation"
+
+features_csv: "outputs/abdo/features/abdo_ssl_features_train.csv"
+embeddings_dir: "outputs/abdo/features/embeddings"
+train_file: "data/splits/abdo/train.txt"
+val_file: "data/splits/abdo/val.txt"
+
+n_train: null   # Update after data preparation
+n_val: null
+
+budgets: [10, 15, 20]
+
+channel: null
+crop_size: 96
+mask_ratio: 0.45
+k_neighbors: 20
+
+metrics:
+  - dice_mean_fg
+  - hd95_mean_fg
+
+upper_bounds:
+  dice: null
+  hd95: null
+
+tag: "(5) Abdominal"

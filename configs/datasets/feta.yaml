@@ -1,0 +1,28 @@
+name: feta
+display: FeTA
+description: "Fetal Brain MRI Tissue Segmentation"
+
+features_csv: "outputs/feta/features/feta_ssl_features_train.csv"
+embeddings_dir: "outputs/feta/features/embeddings"
+train_file: "data/splits/feta/train.txt"
+val_file: "data/splits/feta/val.txt"
+
+n_train: 39
+n_val: 11
+
+budgets: [8, 12, 16]
+
+channel: null        # Single-channel T2w
+crop_size: 96
+mask_ratio: 0.45
+k_neighbors: 15      # Smaller pool → fewer neighbors
+
+metrics:
+  - dice_mean_fg
+  - hd95_mean_fg
+
+upper_bounds:
+  dice: 75.26
+  hd95: 2.5
+
+tag: "(3) Fetal Brain"

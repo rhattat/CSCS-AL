@@ -1,0 +1,4 @@
+name: random
+display: "Random"
+description: "Uniform random sampling without replacement."
+seed: 42

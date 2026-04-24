@@ -1,0 +1,28 @@
+name: diane
+display: DIANE
+description: "DIANE — diffusion-weighted fetal brain MRI"
+
+features_csv: "outputs/diane/features/diane_ssl_features_train.csv"
+embeddings_dir: "outputs/diane/features/embeddings"
+train_file: "data/splits/diane/train.txt"
+val_file: "data/splits/diane/val.txt"
+
+n_train: 55
+n_val: 14
+
+budgets: [5, 7, 9]
+
+channel: null
+crop_size: 96
+mask_ratio: 0.45
+k_neighbors: 15
+
+metrics:
+  - dice_mean_fg
+  - hd95_mean_fg
+
+upper_bounds:
+  dice: 90.2
+  hd95: 3.0
+
+tag: "(4) DIANE"

@@ -1,0 +1,37 @@
+# Example CSCS experiment configuration
+# Run with: python scripts/generate_selection.py --config configs/experiments/example_cscs.yaml
+
+# --- Dataset ---
+# Point to your precomputed features CSV and embeddings
+dataset_config: configs/datasets/spleen.yaml
+
+# Override paths if needed (absolute or relative to repo root)
+# features_csv: /absolute/path/to/spleen_ssl_features_train.csv
+# embeddings_dir: /absolute/path/to/embeddings/
+
+# --- Method ---
+method_config: configs/methods/cscs.yaml
+method_name: cscs
+
+# --- Experiment parameters ---
+budget: 10            # Number of samples to select
+seeds: [42, 123, 456] # Three seeds for statistical robustness
+methods:              # Methods to run in comparison
+  - cscs
+  - random
+  - fps
+  - typiclust
+  - probcover
+  - csal3d
+
+budgets: [7, 10, 14]  # All budget values for full comparison
+
+# --- CSCS-specific ---
+s_min: 3              # Minimum cluster size (thin clusters → global fill)
+
+# --- Output ---
+output_dir: "outputs/"
+
+# --- Split filtering ---
+split: train
+split_col: split

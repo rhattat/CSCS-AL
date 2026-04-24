@@ -1,0 +1,38 @@
+name: brats
+display: BraTS
+description: "Brain Tumor Segmentation Challenge 2021"
+
+# Paths — set via environment or absolute paths on your system
+# Use the CSCS_ROOT environment variable or absolute paths
+features_csv: "outputs/brats/features/brats_ssl_features_train.csv"
+embeddings_dir: "outputs/brats/features/embeddings"
+train_file: "data/splits/brats/train.txt"
+val_file: "data/splits/brats/val.txt"
+
+# Dataset statistics (approximate)
+n_train: 387
+n_val: 97
+
+# Budgets for comparison experiments
+budgets: [77, 116, 155]
+
+# SSL extraction parameters
+channel: 2           # 0=T1, 1=T1ce, 2=T2, 3=FLAIR
+crop_size: 96
+mask_ratio: 0.45
+k_neighbors: 20
+
+# Evaluation metrics
+metrics:
+  - dice_mean_fg
+  - dice_mean_composite
+  - hd95_mean_fg
+  - hd95_mean_composite
+
+# Full-supervision upper bounds (for plotting)
+upper_bounds:
+  dice: 76.2
+  hd95: 5.2
+
+# Plot tag
+tag: "(1) Brain Tumor"

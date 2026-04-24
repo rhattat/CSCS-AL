@@ -1,0 +1,7 @@
+name: typiclust
+display: "TypiClust"
+description: >
+  K-means clustering, then select the most typical sample per cluster.
+  Reference: Hacohen et al., ICML 2022.
+k_nn: 20
+seed: 42

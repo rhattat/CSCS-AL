@@ -1,0 +1,27 @@
+name: cscs
+display: "CSCS"
+description: >
+  Cold-Start Curriculum Selection.
+  Composite score S(x) = T^(1-gamma) * U^gamma with adaptive gamma.
+
+# Gamma parameters (paper defaults)
+gamma_lo: 0.3        # Lower clip bound for gamma
+gamma_hi: 0.7        # Upper clip bound for gamma
+
+# Clustering
+clustering: k-means++
+seed: 42
+n_init: 10           # KMeans restarts for stability
+
+# Robustness
+s_min: 3             # Minimum cluster size; thin clusters skipped
+
+# Output
+output_cols:
+  - volume_id
+  - uncertainty
+  - typicality
+  - cluster_id
+  - score
+  - selected
+  - rank
