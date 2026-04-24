@@ -6,8 +6,11 @@ combining SSL embeddings, typicality, uncertainty, and an adaptive composite sco
 
 > **Paper**: "CSCS: A Dataset-Aware Curriculum for Cold-Start Active Learning in 3D Medical
 > Image Segmentation"  
-> Rémi HATTAT, [et al.] — Université de Lorraine  
+> Rémi Hattat, Marine Beaumont, Charline Bertholdt, Gabriela Hossu, Olivier Morel, Bailiang Chen  
+> IADI (U947), Inserm and Université de Lorraine, Nancy, France  
 > *[Citation placeholder — link to be added upon publication]*
+
+![CSCS Pipeline](figures/CSCS_pipeline.png)
 
 ---
 
@@ -136,12 +139,15 @@ Each selection run produces:
 > **Datasets, SSL checkpoints, and trained models are NOT included.**
 > See [docs/reproduce_experiments.md](docs/reproduce_experiments.md) for setup instructions.
 
-| Dataset | Task | N_train | Budgets |
-|---------|------|---------|---------|
-| BraTS 2021 | Brain tumor segmentation | 387 | 77, 116, 155 |
-| Spleen (MSD) | Spleen segmentation | 34 | 7, 10, 14 |
-| FeTA | Fetal brain MRI | 39 | 8, 12, 16 |
-| DIANE | Fetal DWI (private) | 55 | 5, 7, 9 |
+Budgets correspond to 20% / 30% / 40% of the training pool. DCR is the Difficulty-Coverage
+Ratio (Spearman rank correlation between uncertainty and typicality, see paper §2.2).
+
+| Dataset | Modality | Task | N_train | N_val | Classes | Budgets (20/30/40%) | DCR |
+|---------|----------|------|---------|-------|---------|----------------------|-----|
+| BraTS 2021 (MSD Task01) | Multi-param. MRI (T1, T1ce, T2, FLAIR) | Brain tumor segmentation | 387 | 97 | 3 (whole tumor, tumor core, enhancing tumor) | 77 / 116 / 155 | −0.04 |
+| Spleen (MSD Task09) | CT | Spleen segmentation | 34 | 8 | 1 | 7 / 10 / 14 | +0.29 |
+| FeTA 2022 | T2-weighted fetal brain MRI | Fetal brain anatomy segmentation | 39 | 10 | 7 | 8 / 12 / 16 | +0.23 |
+| DIANE (private, NCT04328532) | T2-weighted fetal MRI (CHRU-Nancy) | Placenta + fetal body segmentation | 18 | 5 | 2 | 5 / 7 / 9 | +0.68 |
 
 ---
 
