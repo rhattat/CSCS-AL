@@ -14,7 +14,7 @@ combining SSL embeddings, typicality, uncertainty, and an adaptive composite sco
 
 ---
 
-## Method Summary
+## 🧠 Method Summary
 
 ```
 For a pool of N unlabeled volumes and budget B:
@@ -34,7 +34,7 @@ Gamma adapts to the dataset structure (DCR) and budget (alpha_eff):
 
 ---
 
-## Installation
+## ⚙️ Installation
 
 ```bash
 git clone https://github.com/your-username/cscs-al.git
@@ -51,7 +51,7 @@ pip install -e ".[ssl,viz]"
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ### From a features CSV (no GPU needed)
 
@@ -92,7 +92,7 @@ python scripts/run_experiment.py \
 
 ---
 
-## Input CSV Format
+## 📄 Input CSV Format
 
 Minimum required columns:
 
@@ -109,7 +109,7 @@ See [docs/data_format.md](docs/data_format.md) for full specification.
 
 ---
 
-## Output Format
+## 📦 Output Format
 
 Each selection run produces:
 
@@ -121,7 +121,7 @@ Each selection run produces:
 
 ---
 
-## Available Methods
+## 🔀 Available Methods
 
 | Method | Description |
 |--------|-------------|
@@ -134,10 +134,7 @@ Each selection run produces:
 
 ---
 
-## Datasets
-
-> **Datasets, SSL checkpoints, and trained models are NOT included.**
-> See [docs/reproduce_experiments.md](docs/reproduce_experiments.md) for setup instructions.
+## 🗄️ Datasets
 
 Budgets correspond to 20% / 30% / 40% of the training pool. DCR is the Difficulty-Coverage
 Ratio (Spearman rank correlation between uncertainty and typicality, see paper §2.2).
@@ -149,9 +146,63 @@ Ratio (Spearman rank correlation between uncertainty and typicality, see paper �
 | FeTA 2022 | T2-weighted fetal brain MRI | Fetal brain anatomy segmentation | 39 | 10 | 7 | 8 / 12 / 16 | +0.23 |
 | DIANE (private, NCT04328532) | T2-weighted fetal MRI (CHRU-Nancy) | Placenta + fetal body segmentation | 18 | 5 | 2 | 5 / 7 / 9 | +0.68 |
 
+### ⬇️ Downloading the Datasets
+
+Public datasets used in this work can be downloaded from their respective official sources:
+
+- **BraTS 2021** and **Spleen (MSD Task09)** are available through the Medical Segmentation
+  Decathlon:  
+  👉 http://medicaldecathlon.com/
+
+- **FeTA 2022** is available from the Fetal Tissue Annotation challenge:  
+  👉 https://fetachallenge.github.io/pages/Data_download.html
+
+> **Note:** DIANE is a private clinical dataset from CHRU-Nancy (trial NCT04328532) and is
+> **not publicly available**.
+
+See [docs/reproduce_experiments.md](docs/reproduce_experiments.md) for dataset preparation
+and directory layout instructions.
+
 ---
 
-## Repository Structure
+## 🔬 SSL Feature Extraction
+
+CSCS requires a 3D SSL feature extractor to compute typicality and uncertainty scores from
+the unlabeled pool. Any 3D SSL backbone producing volume-level embeddings is compatible.
+
+### Recommended backbone (used in our experiments)
+
+We use a **ResNet3D pretrained on Kinetics-400** (external, i.e. no medical fine-tuning)
+as our primary feature extractor. This is the configuration reported in all paper results.
+Extraction scripts and instructions are provided in
+[docs/reproduce_experiments.md](docs/reproduce_experiments.md).
+
+### Alternative: CSAL-3D embeddings
+
+The embeddings from **CSAL-3D** ([HiLab-git/CSAL-3D](https://github.com/HiLab-git/CSAL-3D))
+are fully compatible with our pipeline and offer a convenient option for direct comparison
+with the CSAL-3D baseline (which is included as a built-in method in this repository).
+
+> ⚠️ Note: results may differ from those reported in the paper, which uses the
+> Kinetics-400 ResNet3D backbone.
+
+### Other compatible backbones
+
+The following 3D SSL models have also been tested or are straightforward to integrate:
+
+| Backbone | Source | Notes |
+|----------|--------|-------|
+| ResNet3D (Kinetics-400) | torchvision / torchhub | **Used in paper** |
+| Swin-UNETR | [MONAI Model Zoo](https://monai.io/model-zoo) | Medical pretraining |
+| MedDINO | [LucasFidon/MedDINO](https://github.com/LucasFidon/MedDINO) | DINO-based, fetal MRI |
+| CSAL-3D embeddings | [HiLab-git/CSAL-3D](https://github.com/HiLab-git/CSAL-3D) | Compatible with CSAL-3D baseline |
+
+See `cscs/ssl/` for extraction wrappers and [docs/ssl_backbones.md](docs/ssl_backbones.md)
+for integration instructions.
+
+---
+
+## 🗂️ Repository Structure
 
 ```
 CSCS-AL/
@@ -177,7 +228,7 @@ CSCS-AL/
 
 ---
 
-## Running Tests
+## 🧪 Running Tests
 
 ```bash
 pip install -e ".[dev]"
@@ -186,7 +237,7 @@ pytest tests/ -v
 
 ---
 
-## Citation
+## 📝 Citation
 
 ```bibtex
 @article{hattat2026cscs,
@@ -200,7 +251,7 @@ pytest tests/ -v
 
 ---
 
-## License
+## 📜 License
 
 MIT — see [LICENSE](LICENSE).
 
