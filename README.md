@@ -4,10 +4,10 @@
 segmentation. Given a fully unlabeled pool, CSCS selects an initial labeled set L₀ by
 combining SSL embeddings, typicality, uncertainty, and an adaptive composite score.
 
-> **Paper**: "CSCS: A Dataset-Aware Curriculum for Cold-Start Active Learning in 3D Medical
+> **Paper**: "Dataset-Aware Cold-Start Active Learning for Annotation-Efficient 3D Medical
 > Image Segmentation"  
 > Rémi Hattat, Marine Beaumont, Charline Bertholdt, Gabriela Hossu, Olivier Morel, Bailiang Chen  
-> IADI (U947), Inserm and Université de Lorraine, Nancy, France  
+> IADI (U1254), Inserm and Université de Lorraine, Nancy, France  
 > *[Citation placeholder — link to be added upon publication]*
 
 ![CSCS Pipeline](figures/CSCS_pipeline.png)
@@ -241,8 +241,8 @@ pytest tests/ -v
 
 ```bibtex
 @article{hattat2026cscs,
-  title   = {CSCS: A Dataset-Aware Curriculum for Cold-Start Active Learning
-             in 3D Medical Image Segmentation},
+  title   = {Dataset-Aware Cold-Start Active Learning for
+             Annotation-Efficient 3D Medical Image Segmentation},
   author  = {Hattat, Rémi and others},
   journal = {[To be announced]},
   year    = {2026},
